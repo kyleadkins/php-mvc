@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+
+<h1>Welcome</h1>
+<p>Hello, {{ name }}</p>
+<p>Some of my favorite languages are</p>
+<ul>
+  {% for lang in langs %}
+  <li>{{ lang }}</li>
+  {% endfor %}
+</ul>
+
+{% endblock %}
