@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Posts{% endblock %}
+
+{% block body %}
+
+<h1>Posts</h1>
+<a href="/posts/new">Add a post</a>
+<h2>Recent posts</h2>
+{% for post in posts %}
+<h3 style="display: inline-block; margin-right: 12px;">{{ post['title'] }}</h3><a href="/posts/{{ post['id'] }}/destroy">Delete</a>
+<p>{{ post['content'] }}</p>
+{% endfor %}
+
+{% endblock %}

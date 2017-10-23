@@ -17,7 +17,7 @@ class Posts extends \Core\Controller {
   */
   protected function index() {
     $posts = Post::all();
-    View::render_template('posts.html', [
+    View::render_template('posts/posts.html', [
       'posts' => $posts
     ]);
   }
@@ -26,7 +26,16 @@ class Posts extends \Core\Controller {
    * @return void
   */
   protected function new() {
-    echo 'Hello from the new action in the Posts controller';
+    View::render_template('posts/new.html');
+  }
+
+  /* Create a post
+   * @return void
+  */
+  protected function create() {
+    $post = new Post();
+    $post->save($_POST);
+    header('Location: /posts/index');
   }
 
   /* Show the edit page
@@ -35,5 +44,13 @@ class Posts extends \Core\Controller {
   protected function edit() {
     echo 'Hello from the edit action in the Posts controller';
     echo '<p>Route params: <pre>' . htmlspecialchars(print_r($this->route_params, true)) . '</pre></p>';
+  }
+
+  /* Delete a post
+   * @return void
+  */
+  protected function destroy() {
+    Post::destroy($this->route_params['id']);
+    header('Location: /posts/index');
   }
 }

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}New post{% endblock %}
+
+{% block body %}
+
+<h1>New Post</h1>
+<p>( This doesn't actually add a post, just an example )</p>
+<form action="/posts/create" method="POST">
+  <label for="title">Title</label>
+  <input style="display: block" type="text" name="title" id="title">
+  <label for="content">Content</label>
+  <textarea style="display: block; height: 200px; width: 400px" id="content" name="content"></textarea>
+  <input type="submit">
+</form>
+
+{% endblock %}

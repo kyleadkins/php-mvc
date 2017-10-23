@@ -98,13 +98,13 @@ class Router {
         if (is_callable([$controller_obj, $action])) {
           $controller_obj->$action();
         } else {
-          echo 'Method ' . $action . ' in controller ' . $controller . ' not found';
+          throw new \Exception('Method ' . $action . ' in controller ' . $controller . ' not found');
         }
       } else {
-        echo 'Controller ' . $controller . ' not found';
+        throw new \Exception('Controller ' . $controller . ' not found');
       }
     } else {
-      echo 'No route matched';
+      throw new \Exception('No route matched', 404);
     }
   }
 
